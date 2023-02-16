@@ -131,6 +131,9 @@
                             @include for-phone-only{
                                 padding: 5px 10px;
                             }
+                            @include for-intermediate-phone-only{
+                                max-width: 375px;
+                            }
                             
                             h2{
                                 @include font($weight: 500, $size: 20px, $line: 24px, $color: #FFFFFF);
@@ -160,6 +163,10 @@
                             .form__when{
                                 @include flex($display, $just, $align);
                                 gap: 24px;
+                                @include for-intermediate-phone-only{
+                                    flex-direction: column;
+                                    gap: 22px;
+                                }
                                 .when{
                                     border: 1px solid #FFFFFF;
                                     border-radius: 4px;
@@ -167,7 +174,9 @@
                                     @include font($weight: 500, $size: 13px, $line: 16px, $color: #FFFFFF);                              
                                     background: none;
                                     outline: none;
-                                    //width: 80%;
+                                    @include for-intermediate-phone-only{
+                                        width: 100%;
+                                    }
                                 }
                                 .duration{
                                     border: 1px solid #FFFFFF;
@@ -176,6 +185,9 @@
                                     @include font($weight: 500, $size: 13px, $line: 16px, $color: #FFFFFF);                              
                                     background: none;
                                     outline: none;
+                                    @include for-intermediate-phone-only{
+                                        width: 100%;
+                                    }
                                 }
                             }
                             .form__tour-type{
@@ -230,7 +242,7 @@
 
                             .icons__icon{
                                 img{
-                                    margin-bottom: 17px;
+                                    margin: 17px 0;
                                 }
                                 p{
                                     @include font($weight: 500, $size: 20px, $line: 24px, $color: #FFFFFF);
@@ -269,13 +281,16 @@
                                 grid-auto-rows: minmax(480px, auto);
                                 gap: 3%;
                             }
+                            @include for-intermediate-tablet-only{
+                                grid-auto-rows: minmax(400px, auto);
+                            }
                             @include for-phone-only{
                                 grid-template-columns: repeat(1, 1fr);
                                 grid-auto-rows: minmax(500px, auto);
                                 gap: .5%;
                             }
                             @include for-intermediate-phone-only{
-                                grid-auto-rows: minmax(550px, auto);
+                                grid-auto-rows: minmax(470px, auto);
                             }
 
                             .grid-actual__elem{
@@ -283,10 +298,11 @@
                                 height: 100%;
                                 background: #23282F;
                                 border-radius: 4px;
-                                transition: transform 1s cubic-bezier(0.65, 0.05, 0.36, 1);
+                                transition: transform 0.5s cubic-bezier(0.65, 0.05, 0.36, 1);
                                 animation-name: moveUp;
-                                animation-duration: 2s;
-                                
+                                animation-duration: 1s;
+                                position: relative;
+                                overflow: hidden;
                                 .image{
                                     width: 100%;
                                     position: relative;
@@ -332,26 +348,11 @@
                                 }
                                 .info{
                                     padding: 16px 20px;
-                                    position: relative;
-                                    overflow: hidden;
                                     height: 50%;
                                     @include for-desktop-up{
                                         padding: 10px 15px;
-                                        height: 40%;
                                     }
-                                    @include for-tablet-landscape-up{
-                                        position: relative;
-                                        height: 45%;
-                                    }
-                                    @include for-intermediate-tablet-only{
-                                        height: 60%;
-                                    }
-                                    @include for-phone-only{
-                                        height: 35%;
-                                    }
-                                    @include for-intermediate-phone-only{
-                                        height: 44%;
-                                    }
+                                    
                                     h3{
                                         @include font($weight: 500, $size: 20px, $line: 24px, $color: #FFFFFF);
                                     }
@@ -359,21 +360,7 @@
                                         @include font($weight: 400, $size: 14px, $line: 20px, $color: #FFFFFF);
                                         margin: 16px 0;
                                     }
-                                    .info__link{
-                                        @include font($weight: 500, $size: 13px, $line: 16px, $color: #FFFFFF);
-                                        opacity: 0.5;
-                                        position: absolute;
-                                        bottom: 10px;
-                                        left: 20px;
-                                        text-decoration: none;
-                                        display: block;
-                                        @include for-desktop-up{
-                                            position: absolute;
-                                            left: 15px;
-                                            bottom: 5px;
-                                        }
-                                        
-                                    }
+                                    
                                 }
                                 &:hover{
                                     background: #FFFFFF;
@@ -391,6 +378,21 @@
                                         .info__link{
                                             color: #000000;
                                         }
+                                    }
+                                }
+
+                                .info__link{
+                                    @include font($weight: 500, $size: 13px, $line: 16px, $color: #FFFFFF);
+                                    opacity: 0.5;
+                                    position: absolute;
+                                    bottom: 10px;
+                                    left: 20px;
+                                    text-decoration: none;
+                                    display: block;
+                                    @include for-desktop-up{
+                                        position: absolute;
+                                        left: 15px;
+                                        bottom: 10px;
                                     }
                                 }
                             }
@@ -438,7 +440,7 @@
                         max-width: 1133px;
                         margin: auto;
                         @include flex($display: flex, $just: center, $align: center);
-                        gap: 24px;
+                        gap: 44px;
                         padding: 59px 0 68px;
                         @include for-desktop-up{
                             justify-content: center;
@@ -485,19 +487,16 @@
                             gap: 24px;
                             @include for-desktop-up{
                                 grid-template-columns: repeat(2, 2fr);
-                                grid-auto-rows: minmax(650px, auto);
+                                grid-auto-rows: minmax(600px, auto);
                             }
                             @include for-tablet-landscape-up{
-                                grid-auto-rows: minmax(580px, auto);
+                                grid-auto-rows: minmax(550px, auto);
                             }
                             @include for-intermediate-tablet-only{
-                                grid-auto-rows: minmax(510px, auto);
-                            }
-                            @include for-phone-only{
                                 grid-auto-rows: minmax(500px, auto);
                             }
                             @include for-intermediate-phone-only{
-                                grid-auto-rows: minmax(650px, auto);
+                                grid-auto-rows: minmax(580px, auto);
                             }
                             .grid-blog__card{
                                 width: 100%;
@@ -545,6 +544,8 @@
                                 background: #23282F;
                                 box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
                                 border-radius: 4px;
+                                position: relative;
+                                overflow: hidden;
                                 @include for-intermediate-phone-only{
                                     grid-column: 1 / 3;
                                 }
@@ -554,21 +555,8 @@
                                 }
                                 .card-text{
                                     padding: 10px 20px;
-                                    position: relative;
-                                    overflow: hidden;
                                     height: 55%;
-                                    @include for-desktop-up{
-                                        height: 37%;
-                                    }
-                                    @include for-intermediate-tablet-only{
-                                        height: 48%;
-                                    }
-                                    @include for-phone-only{
-                                        height: 55%;
-                                    }
-                                    @include for-intermediate-phone-only{
-                                        height: 35%;
-                                    }
+                                    
                                     h3{
                                         @include font($weight: 500, $size: 20px, $line: 24px, $color: #FFFFFF);
                                     }
@@ -576,32 +564,32 @@
                                         @include font($weight: 400, $size: 14px, $line: 20px, $color: #FFFFFF);
                                         margin: 14px 0 20px
                                     }
-                                    .card-info{
-                                        @include flex($display, $just, $align);
-                                        gap: 9px;
-                                        position: absolute;
-                                        left: 20px;
-                                        bottom: 10px;
-                                        p{
-                                            @include font($weight: 400, $size: 13px, $line: 16px, $color: rgba(255, 255, 255, 0.5));
-                                            margin-right: 12px
-                                        }
-                                        .comment{
-                                            @include flex($display, $just, $align: baseline);
-                                            gap: 6px;
-                                            @include font($weight: 400, $size: 13px, $line: 16px, $color: rgba(255, 255, 255, 0.5));
-                                            
-                                        }
-                                        .like{
-                                            @include flex($display, $just, $align: baseline);
-                                            gap: 6px;
-                                            
-                                            p.active-like{
-                                                @include font($weight: 400, $size: 13px, $line: 16px, $color: #FFFFFF);
-                                            }
-                                        }
+                                }
+                                .card-info{
+                                    @include flex($display, $just, $align);
+                                    gap: 9px;
+                                    position: absolute;
+                                    left: 20px;
+                                    bottom: 10px;
+                                    p{
+                                        @include font($weight: 400, $size: 13px, $line: 16px, $color: rgba(255, 255, 255, 0.5));
+                                        margin-right: 12px
+                                    }
+                                    .comment{
+                                        @include flex($display, $just, $align: baseline);
+                                        gap: 6px;
+                                        @include font($weight: 400, $size: 13px, $line: 16px, $color: rgba(255, 255, 255, 0.5));
                                         
                                     }
+                                    .like{
+                                        @include flex($display, $just, $align: baseline);
+                                        gap: 6px;
+                                        
+                                        p.active-like{
+                                            @include font($weight: 400, $size: 13px, $line: 16px, $color: #FFFFFF);
+                                        }
+                                    }
+                                    
                                 }
                             }
                         }
